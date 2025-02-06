@@ -1,0 +1,10 @@
+services:
+  gaianet-bot:
+    build: .
+    image: gaianet-bot:latest
+    container_name: gaianet-bot
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    env_file:
+      - .env
