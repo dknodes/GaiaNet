@@ -69,6 +69,7 @@ install_node() {
             gaianet init --config $custom_config
             ;;
         *)
+            source $HOME/.bashrc
             gaianet init --config $default_config
             ;;
     esac
