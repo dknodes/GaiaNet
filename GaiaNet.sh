@@ -135,6 +135,18 @@ view_bot_logs() {
     read -p "Press Enter to return to the main menu."
 }
 
+update_node(){
+    echo -e "${STOP} Update Node...${RESET}"
+    gaianet stop
+
+    curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
+
+    source $HOME/.bashrc
+
+    gaianet start
+    read -p "Press Enter to return to the main menu."
+}
+
 # ----------------------------
 # Stop Node
 # ----------------------------
@@ -198,7 +210,8 @@ show_menu() {
     echo -e "    ${CYAN}8.${RESET} ${STOP} Stop Node"
     echo -e "    ${CYAN}9.${RESET} ${STOP} Stop Bot"
     echo -e "    ${CYAN}10.${RESET} ${ERROR} DELETE Node"
-    echo -e "    ${CYAN}11.${RESET} ${EXIT} Exit"
+    echo -e "    ${CYAN}11.${RESET} ${INSTALL} Update node"
+    echo -e "    ${CYAN}12.${RESET} ${EXIT} Exit"
     echo -ne "    ${YELLOW}Enter your choice [1-10]: ${RESET}"
 }
 
@@ -219,7 +232,8 @@ while true; do
         8) stop_node;;
         9) stop_bot;;
         10) delete_node;;
-        11)
+        11) update_node;;
+        12)
             echo -e "${EXIT} Exiting...${RESET}"
             exit 0
             ;;
